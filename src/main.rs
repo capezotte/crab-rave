@@ -77,8 +77,8 @@ fn prep_markov() {
             } else {
                 log::trace!("End word: {word1}");
             }
-            add_stmt.bind(1, split_str.next().unwrap_or("")).unwrap();
-            add_stmt.bind(2, split_str.next()).unwrap();
+            add_stmt.bind(1, word1).unwrap();
+            add_stmt.bind(2, word2).unwrap();
             add_stmt.next().unwrap();
             add_stmt.reset().unwrap();
         }
