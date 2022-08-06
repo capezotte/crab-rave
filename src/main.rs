@@ -38,7 +38,7 @@ async fn answer(
 
 fn prep_markov() {
     // Check if we've already init
-    log::trace!("Readying markov chain...");
+    log::info!("Readying markov chain...");
     if let Ok(connection) = sqlite::open("./markov.sqlite") {
         let mut found = false;
         match connection.iterate("SELECT name FROM sqlite_master WHERE name = 'pairs'", |_| { found = true; false }) {
@@ -52,7 +52,7 @@ fn prep_markov() {
         }
     }
     // Else init
-    log::trace!("Initting markov...");
+    log::info!("Initializing markov from in...");
     let connection = sqlite::open(":memory:").unwrap();
 
     // Initialize
@@ -85,7 +85,7 @@ fn prep_markov() {
     }
     log::trace!("Create index...");
     connection.execute("CREATE INDEX idx_word1 ON pairs (word1);").unwrap();
-    log::trace!("Saving markov to disk...");
+    log::info!("Saving markov to disk...");
     connection.execute("VACUUM INTO './markov.sqlite';").unwrap();
 }
 
