@@ -1,0 +1,8 @@
+#!/bin/sh
+awk -F '[][[:blank:])(}{,:;.?!^$*"\\\\]+' '{
+	print " " tolower($1)
+	for (i = 1; i < NF; i++) {
+		print tolower($i), tolower($(i+1))
+	}
+	print tolower($i)
+}' | sed 's/[[:blank:]]*$//;/^$/d'

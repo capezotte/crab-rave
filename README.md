@@ -26,6 +26,6 @@ nonsense generator
 generator
 ```
 
-For convenience, you can run a line-by-line chat dump through the `mkdb` shell script to generate files like the above automatically.
+The `contrib` subfolder has the `telegram2crabrave` jq script that can convert a Telegram JSON chat dump into this format, as well as a `mkdb` bash script that works with line-by-line entries.
 
 It'll be converted to an indexed sqlite database stored under `chain.sqlite`.

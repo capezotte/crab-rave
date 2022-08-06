@@ -1,0 +1,10 @@
+#!/usr/bin/jq -rf
+.messages[] | select(.type == "message") | .text |
+	if type == "string" then
+		.
+	else
+		map(if type == "string" then . else .text end) | join(" ")
+	end |
+split("[[:space:][:punct:]]+"; "m") | select(length > 0) | map(select(. != "")) |
+	" " + .[0], (while(length > 0; .[1:]) | .[0:2] | join(" "))
+
