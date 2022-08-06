@@ -28,4 +28,4 @@ generator
 
 The `contrib` subfolder has the `telegram2crabrave` jq script that can convert a Telegram JSON chat dump into this format, as well as a `mkdb` bash script that works with line-by-line entries.
 
-It'll be converted to an indexed sqlite database stored under `chain.sqlite`.
+It'll be converted to an indexed sqlite database stored under `markov.sqlite`.
